@@ -58,9 +58,11 @@
     <string name="summary_animation_no_override">Prevent apps from overriding transitions</string>
     <string name="animation_duration_default">Default</string>
     <string name="task_open_behind_title">Task open behind animation</string>
+    <string name="animation_duration_custom">Custom</string>
     
     <!-- Toast Animation -->
     <string name="toast_animation_title">Toast animation</string>
+    <string name="toast_animation_test">This is test for toast animation</string>
     <string name="toast_none_animation">None</string>
     <string name="toast_default_animation">Default</string>
     <string name="toast_fade_animation">Fade</string>
@@ -531,6 +533,8 @@
     <string name="profile_choose_app">Choose app</string>
     <string name="dialog_delete_title">Delete</string>
     <string name="dialog_delete_message">Remove selected item?</string>
+
+    <string name="system_animation_summary">Customize the animations of each window in system</string>
 
 </resources>
 
