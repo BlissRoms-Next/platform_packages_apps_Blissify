@@ -192,20 +192,20 @@ public class Animation extends SettingsPreferenceFragment implements
 
         mToastAnimation = (ListPreference) findPreference(KEY_TOAST_ANIMATION);
         mToastAnimation.setSummary(mToastAnimation.getEntry());
-        int CurrentToastAnimation = Settings.System.getInt(getContentResolver(), Settings.System.TOAST_ANIMATION, 1);
+        int CurrentToastAnimation = Settings.Global.getInt(getContentResolver(), Settings.Global.TOAST_ANIMATION, 1);
         mToastAnimation.setValueIndex(CurrentToastAnimation); //set to index of default value
         mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
         mToastAnimation.setOnPreferenceChangeListener(this);
 
         mListViewAnimation = (ListPreference) prefs.findPreference(KEY_LISTVIEW_ANIMATION);
-        int listviewanimation = Settings.System.getInt(getContentResolver(),
-                Settings.System.LISTVIEW_ANIMATION, 0);
+        int listviewanimation = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.LISTVIEW_ANIMATION, 0);
         mListViewAnimation.setValue(String.valueOf(listviewanimation));
         mListViewAnimation.setSummary(mListViewAnimation.getEntry());
         mListViewAnimation.setOnPreferenceChangeListener(this);
         mListViewInterpolator = (ListPreference) prefs.findPreference(KEY_LISTVIEW_INTERPOLATOR);
-        int listviewinterpolator = Settings.System.getInt(getContentResolver(),
-                Settings.System.LISTVIEW_INTERPOLATOR, 0);
+        int listviewinterpolator = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.LISTVIEW_INTERPOLATOR, 0);
         mListViewInterpolator.setValue(String.valueOf(listviewinterpolator));
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
@@ -254,67 +254,67 @@ public class Animation extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mActivityOpenPref) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[0], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[0], val);
         } else if (preference == mActivityClosePref) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[1], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[1], val);
         } else if (preference == mTaskOpenPref) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[2], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[2], val);
         } else if (preference == mTaskClosePref) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[3], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[3], val);
         } else if (preference == mTaskMoveToFrontPref) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[4], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[4], val);
         } else if (preference == mTaskMoveToBackPref) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[5], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[5], val);
         } else if (preference == mWallpaperOpen) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[6], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[6], val);
         } else if (preference == mWallpaperClose) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[7], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[7], val);
         } else if (preference == mWallpaperIntraOpen) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[8], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[8], val);
         } else if (preference == mWallpaperIntraClose) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[9], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[9], val);
         } else if (preference == mTaskOpenBehind) {
             int val = Integer.parseInt((String) newValue);
-            result = Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.ACTIVITY_ANIMATION_CONTROLS[10], val);
+            result = Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.ACTIVITY_ANIMATION_CONTROLS[10], val);
         } else if (preference == mToastAnimation) {
             int index = mToastAnimation.findIndexOfValue((String) newValue);
-            Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) newValue);
+            Settings.Global.putString(getContentResolver(), Settings.Global.TOAST_ANIMATION, (String) newValue);
             mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
             Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
             return true;
         } else if (preference == mListViewAnimation) {
             int value = Integer.parseInt((String) newValue);
             int index = mListViewAnimation.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LISTVIEW_ANIMATION, value);
+            Settings.Global.putInt(getContentResolver(),
+                    Settings.Global.LISTVIEW_ANIMATION, value);
             mListViewAnimation.setSummary(mListViewAnimation.getEntries()[index]);
             mListViewInterpolator.setEnabled(value > 0);
             return true;
         } else if (preference == mListViewInterpolator) {
             int value = Integer.parseInt((String) newValue);
             int index = mListViewInterpolator.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LISTVIEW_INTERPOLATOR, value);
+            Settings.Global.putInt(getContentResolver(),
+                    Settings.Global.LISTVIEW_INTERPOLATOR, value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
             return true;
         } else if (preference == mScrollingCachePref) {
@@ -355,30 +355,30 @@ public class Animation extends SettingsPreferenceFragment implements
     private String getProperSummary(Preference preference) {
         String mString = "";
         if (preference == mActivityOpenPref) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[0];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[0];
         } else if (preference == mActivityClosePref) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[1];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[1];
         } else if (preference == mTaskOpenPref) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[2];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[2];
         } else if (preference == mTaskClosePref) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[3];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[3];
         } else if (preference == mTaskMoveToFrontPref) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[4];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[4];
         } else if (preference == mTaskMoveToBackPref) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[5];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[5];
         } else if (preference == mWallpaperOpen) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[6];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[6];
         } else if (preference == mWallpaperClose) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[7];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[7];
         } else if (preference == mWallpaperIntraOpen) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[8];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[8];
         } else if (preference == mWallpaperIntraClose) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[9];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[9];
         } else if (preference == mTaskOpenBehind) {
-            mString = Settings.System.ACTIVITY_ANIMATION_CONTROLS[10];
+            mString = Settings.Global.ACTIVITY_ANIMATION_CONTROLS[10];
         }
 
-        int mNum = Settings.System.getInt(mContext.getContentResolver(), mString, 0);
+        int mNum = Settings.Global.getInt(mContext.getContentResolver(), mString, 0);
         return mAnimationsStrings[mNum];
     }
 
