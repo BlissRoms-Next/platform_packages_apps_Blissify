@@ -56,7 +56,7 @@ import java.util.Collections;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String FINGERPRINT_VIB = "FP_SUCCESS_VIBRATE";
+    private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
 
     private static final String SMART_PIXELS_ENABLED = "smart_pixels_enable";
 
@@ -81,7 +81,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mFingerprintVib);
         } else {
         mFingerprintVib.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.FP_SUCCESS_VIBRATE, 1) == 1));
+                Settings.System.FINGERPRINT_SUCCESS_VIB, 1) == 1));
         mFingerprintVib.setOnPreferenceChangeListener(this);
         }
 
@@ -99,6 +99,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         if (!getResources().getBoolean(com.android.internal.R.bool.config_enableSmartPixels)) {
             getPreferenceScreen().removePreference(mSmartPixelsEnabled);
         }
+        
     }
 
     private void writeCpuInfoOptions(boolean value) {
@@ -121,7 +122,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         if (preference == mFingerprintVib) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.FP_SUCCESS_VIBRATE, value ? 1 : 0);
+                    Settings.System.FINGERPRINT_SUCCESS_VIB, value ? 1 : 0);
             return true;
         }
 
